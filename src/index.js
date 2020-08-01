@@ -1,3 +1,5 @@
 ArtworkAdapter.fetchandMakeArtworks()
   .then(ArtistAdapter.fetchandMakeArtists)
   .then(Artist.renderAllArtists)
+  .then(RandomArtworkAdapter.fetchandMakeArtworks)
+  .then(Random.renderRandomSelection)

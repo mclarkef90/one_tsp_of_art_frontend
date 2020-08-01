@@ -19,14 +19,20 @@ class Artist{
     this.artworks.id= `artist-${this.id}-artworks`
     this.editButton= document.createElement('button')
     this.editButton.innerText= "Edit Artist"
+    this.addArtworkButton= document.createElement('button')
+    this.addArtworkButton.innerText= "Add Artwork"
     let space= document.createElement('p')
     space.innerText= "===================="
-    this.main.append(this.details, this.editButton, this.artworks, space)
+    this.main.append(this.details, this.editButton, this.addArtworkButton, this.artworks, space)
 
     this.form= document.createElement('form')
 
     this.editButton.addEventListener('click', this.renderEditArtistForm)
     this.form.addEventListener('submit', this.submitEditArtistForm)
+
+
+    this.addArtworkButton.addEventListener('click', this.artistNewArtwork)
+
     Artist.all.push(this)
   }
 
@@ -74,6 +80,12 @@ class Artist{
       this.editButton.disabled= false
       this.renderDetails()
       ArtistAdapter.editArtist(this)
+  }
+
+  artistNewArtwork= () => {
+    this.addArtworkButton.disabled= true,
+    console.log(this),
+    Artwork.renderAddArtworkForm(this)
   }
 
   static renderAllArtists(){
