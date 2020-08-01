@@ -1,10 +1,10 @@
 class ArtworkAdapter  {
-  constructor(url){
-    this.baseURL= url
-  }
 
-  fetchandMakeArtworks(){
-    return fetch(this.baseURL)
+static baseURL= "http://localhost:3000/api/v1/artworks"
+
+
+static fetchandMakeArtworks(){
+    return fetch(ArtworkAdapter.baseURL)
     .then((obj) => obj.json())
     .then(function(artworksArray){
       return artworksArray.forEach(function(artwork){

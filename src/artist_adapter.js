@@ -1,11 +1,9 @@
 class ArtistAdapter{
 
-  constructor(url){
-    this.baseURL= url
-  }
+  static baseURL= "http://localhost:3000/api/v1/artists"
 
-  fetchandMakeArtists(){
-    return fetch(this.baseURL)
+  static fetchandMakeArtists(){
+    return fetch(ArtistAdapter.baseURL)
     .then(res => res.json())
     .then(function(artistArray){
       return artistArray.forEach(function(artist){
