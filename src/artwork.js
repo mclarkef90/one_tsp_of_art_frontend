@@ -76,11 +76,10 @@ static submitAddArtworkForm= (e) => {
   e.preventDefault()
   console.log(e)
   Artwork.newArtworkForm.querySelectorAll('input').forEach(function(input){
-    console.log(input.value)
-    // input.name !== "submit" && (this[`${input.name}`] = input.value)}, this)
+    input.name !== "submit" && (this[`${input.name}`] = input.value)}, this)
     // this.editButton.disabled= false
-    // this.renderDetails()
-    // ArtistAdapter.editArtist(this)
-})
+    
+    ArtworkAdapter.createArtwork(this)
 }
+
 }

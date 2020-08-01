@@ -15,7 +15,8 @@ static fetchandMakeArtworks(){
   }
 
 static createArtwork({title, year, description, image_url, artist_id}){
-    return fetch(`${ArtistAdapter.baseURL}/${artist_id}`, {
+  debugger
+    return fetch(`http://localhost:3000/api/v1/artists/${artist_id}/artworks`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +27,8 @@ static createArtwork({title, year, description, image_url, artist_id}){
           title,
           year,
           description,
-          image_url
+          image_url,
+    
         }
       })
     })
