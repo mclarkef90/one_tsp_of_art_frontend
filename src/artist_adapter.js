@@ -11,4 +11,21 @@ class ArtistAdapter{
       })
     })
   }
+
+  static editArtist({id, name, biography, profile_image_url}){
+    return fetch(`${ArtistAdapter.baseURL}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        artist: {
+          name,
+          biography,
+          profile_image_url
+        }
+      })
+    })
+  }
 }

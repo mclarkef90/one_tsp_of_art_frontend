@@ -3,7 +3,8 @@ class Artist{
   static all= []
   static mainContainer= document.getElementById('main-container')
 
-  constructor({name, biography, profile_image_url, artworks}){
+  constructor({id, name, biography, profile_image_url, artworks}){
+    this.id= id
     this.name= name
     this.biography= biography
     this.profile_image_url= profile_image_url
@@ -20,7 +21,12 @@ class Artist{
     this.editButton.innerText= "Edit Artist"
     let space= document.createElement('p')
     space.innerText= "===================="
-    this.main.append(this.details, this.artworks, this.editButton, space)
+    this.main.append(this.details, this.editButton, this.artworks, space)
+
+    this.form= document.createElement('form')
+
+    this.editButton.addEventListener('click', this.renderEditArtistForm)
+    this.form.addEventListener('submit', this.submitEditArtistForm)
     Artist.all.push(this)
   }
 
@@ -29,20 +35,45 @@ class Artist{
     <img src="${this.profile_image_url}" width= "200px" length= "300px">
     <p>Name: <span>${this.name}</span>
     <p>Biography: <span>${this.biography}</span>
-    <p>Artworks: <span>${this.artworks}</span></p>
+
     `
   }
 
   allArtworks(){
-    return Artwork.all.filter(artwork => artwork.artistId == this.id)
+    return Artwork.all.filter(artwork => artwork.artist.id == this.id)
   }
 
   renderArtworks(){
-    this.artworks.innerHTML= this.allArtworks().map(artwork => artwork.renderLI()).join(" | ")
+    this.artworks.innerHTML= this.allArtworks().map(artwork => artwork.renderLI()).join("")
   }
 
   renderLI(){
-    return `<li>${this.name}</id>`
+    return `<li>${this.name}</li>`
+  }
+
+  renderEditArtistForm = () => {
+    this.editButton.disabled= true
+    console.log(this);
+    this.details.innerHTML= ""
+    this.details.appendChild(this.form)
+    this.form.innerHTML= `
+    <label>Name:</label>
+    <input type= "text" name="name" value="${this.name}"><br>
+    <label>Image URL:</label>
+    <input type= "text" name="image_url" value="${this.profile_image_url}"><br>
+    <label>Biography:</label>
+    <input type= "text" name="biography" value="${this.biography}"><br>
+    <input id="edit-artist" type="submit" value="Submit">
+    `}
+
+  submitEditArtistForm= (e) => {
+    e.preventDefault()
+    console.log(e)
+    this.form.querySelectorAll('input').forEach(function(input){
+      input.name !== "submit" && (this[`${input.name}`] = input.value)}, this)
+      this.editButton.disabled= false
+      this.renderDetails()
+      ArtistAdapter.editArtist(this)
   }
 
   static renderAllArtists(){

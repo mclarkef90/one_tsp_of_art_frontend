@@ -22,6 +22,7 @@ class Artwork{
 
   renderDetails(){
     this.details.innerHTML= `
+    <h4>Artworks:</h4>
     <img src="${this.image_url}" width= "400px" length= "600px">
     <p>Title: <span>${this.title}</span></p>
     <p>Year: <span>${this.year}</span></p>
@@ -38,7 +39,11 @@ class Artwork{
   }
 
   renderLI(){
-    return `<li>${this.title}</id>`
+    return `
+    <img src="${this.image_url}" width= "400px" length= "600px"><br>
+    <h4>${this.title}, ${this.year}</h4>
+    <p>${this.description}</p><br>
+    `
   }
 
 }
