@@ -4,12 +4,13 @@ class Artwork{
   static featureContainer= document.querySelector("#feature-container")
   static newArtworkForm= document.querySelector("#add-artwork-form")
 
-  constructor({id, title, year, image_url, description, artist}){
+  constructor({id, title, year, image_url, description, likes, artist}){
     this.id= id
     this.title= title
     this.year= year
     this.image_url= image_url
     this.description= description
+    this.likes= likes
     this.artist= artist
 
     this.main= document.createElement('div')
@@ -46,6 +47,7 @@ class Artwork{
     <div id="artworkLi-${this.id}">
     <img src="${this.image_url}" width= "400px" length= "600px"><br>
     <h4>${this.title}, ${this.year}</h4>
+    <p>Likes: ${this.likes}</p>
     <p>${this.description}</p><br>
     <button id="${this.id}" type="submit">Edit Artwork</button>
     </div>`
@@ -123,6 +125,7 @@ static renderAddArtworkForm(artist) {
   <label>Description:</label>
   <input type= "text" name="description"><br>
   <input type="hidden" name= "artist_id" value=${artist.id}>
+  <input type="hidden" name= "likes" value= 0>
   <input id="add-artwork" type="submit" value="Submit">
   `
   Artwork.newArtworkForm.append(form)

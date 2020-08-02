@@ -14,7 +14,7 @@ static fetchandMakeArtworks(){
     })
   }
 
-static createArtwork({title, year, description, image_url, artist_id}){
+static createArtwork({title, year, description, image_url, likes, artist_id}){
 
     return fetch(`http://localhost:3000/api/v1/artists/${artist_id}/artworks`, {
       method: "POST",
@@ -28,6 +28,7 @@ static createArtwork({title, year, description, image_url, artist_id}){
           year,
           description,
           image_url,
+          likes
 
         }
       })
