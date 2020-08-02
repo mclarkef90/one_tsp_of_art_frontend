@@ -36,7 +36,7 @@ class Artist{
 
     this.artworks.addEventListener('click', this.renderEditArtworkForm)
 
-    this.deleteButton.addEventListener('button', this.deleteArtist)
+    this.deleteButton.addEventListener('click', this.deleteArtist)
 
     Artist.all.push(this)
   }
@@ -93,7 +93,6 @@ class Artist{
   }
 
   deleteArtist = () => {
-
     ArtistAdapter.deleteArtist(this.id)
 
   }

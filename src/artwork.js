@@ -88,7 +88,7 @@ static renderEditArtworkForm(artist, event){
 
 static submitArtworkEdit= (e) => {
   e.preventDefault()
-  debugger
+  
   e.srcElement.querySelectorAll('input').forEach(function(input){
      input.name !== "submit" && (this[`${input.name}`] = input.value)}, this)
   ArtworkAdapter.editArtwork(this)

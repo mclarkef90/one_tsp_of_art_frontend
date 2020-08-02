@@ -30,7 +30,7 @@ class ArtistAdapter{
   }
 
 static newArtist({name, biography, profile_image_url}){
-  debugger
+  
     return fetch(`${ArtistAdapter.baseURL}`, {
       method: "POST",
       headers: {
