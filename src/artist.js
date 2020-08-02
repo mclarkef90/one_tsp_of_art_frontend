@@ -135,5 +135,23 @@ static createArtist(e){
     ArtistAdapter.newArtist({name, biography, profile_image_url})
   }
 
+  static filterArtists(e){
+    e.preventDefault();
+    const searchEntry= document.querySelector("#search-entry").value
+    console.log(searchEntry)
+    Artist.filterForResults(searchEntry)
+  }
 
+static filterForResults(searchEntry){
+    const array= Artist.all
+      let results = []
+      results= array.filter(el => el.name.toLowerCase().indexOf(searchEntry.toLowerCase()) !== -1)
+      console.log(results)
+      const mainContainer= document.querySelector("#main-container")
+      mainContainer.innerHTML = "";
+      results.forEach(artist => {artist.renderDetails()
+      artist.renderArtworks()
+      Artist.mainContainer.appendChild(artist.main)
+    })
+    }
 }
