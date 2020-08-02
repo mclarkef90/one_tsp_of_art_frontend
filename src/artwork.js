@@ -88,27 +88,11 @@ static renderEditArtworkForm(artist, event){
 
 static submitArtworkEdit= (e) => {
   e.preventDefault()
-  
+
   e.srcElement.querySelectorAll('input').forEach(function(input){
      input.name !== "submit" && (this[`${input.name}`] = input.value)}, this)
   ArtworkAdapter.editArtwork(this)
 }
-
-// = () => {
-//   console.log(this)
-//   this.editButton.disabled= true
-//
-
-
-    // <label>Name:</label>
-    // <input type= "text" name="name" value="${this.name}"><br>
-    // <label>Image URL:</label>
-    // <input type= "text" name="image_url" value="${this.profile_image_url}"><br>
-    // <label>Biography:</label>
-    // <input type= "text" name="biography" value="${this.biography}"><br>
-    // <input id="edit-artist" type="submit" value="Submit">
-    // `}
-
 
 static renderAddArtworkForm(artist) {
   //id.addArtworkButton.disabled= true

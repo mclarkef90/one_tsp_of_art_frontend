@@ -36,7 +36,6 @@ class Random{
     <p>Description: <span>${this.description}</span></p>
     <p>Artist: <span>${this.artist.name}</span></p>
     `
-
   }
 
 

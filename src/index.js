@@ -11,10 +11,6 @@ clearSearch.addEventListener("click", function(e){
   Artist.filterForResults(searchEntry)
 })
 
-
-
-
-
 ArtworkAdapter.fetchandMakeArtworks()
   .then(ArtistAdapter.fetchandMakeArtists)
   .then(Artist.renderAllArtists)

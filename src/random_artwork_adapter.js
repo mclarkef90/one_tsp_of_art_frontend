@@ -18,18 +18,13 @@ static updateLikes(id, updateLikes){
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
-
-      },
+        Accept: "application/json"},
       body: JSON.stringify({
-        likes: updateLikes,
-
+        likes: updateLikes,})
       })
-    })
     .then(res => res.json())
     .then(
       document.getElementById("feature-container").querySelector("#likes").innerHTML= `Likes: ${updateLikes}`
-    )
-}
+    )}
 
 }
