@@ -30,9 +30,9 @@ class Artist{
     this.editButton.addEventListener('click', this.renderEditArtistForm)
     this.form.addEventListener('submit', this.submitEditArtistForm)
 
-
     this.addArtworkButton.addEventListener('click', this.artistNewArtwork)
 
+    this.artworks.addEventListener('click', this.renderEditArtworkForm)
     Artist.all.push(this)
   }
 
@@ -41,7 +41,6 @@ class Artist{
     <img src="${this.profile_image_url}" width= "200px" length= "300px">
     <p>Name: <span>${this.name}</span>
     <p>Biography: <span>${this.biography}</span>
-
     `
   }
 
@@ -50,11 +49,7 @@ class Artist{
   }
 
   renderArtworks(){
-    this.artworks.innerHTML= this.allArtworks().map(artwork => artwork.renderLI()).join("")
-  }
-
-  renderLI(){
-    return `<li>${this.name}</li>`
+    this.artworks.innerHTML= this.allArtworks().map(artwork => artwork.renderLI(this.id)).join("<br><br>")
   }
 
   renderEditArtistForm = () => {
@@ -86,6 +81,10 @@ class Artist{
     this.addArtworkButton.disabled= true,
     console.log(this),
     Artwork.renderAddArtworkForm(this)
+  }
+
+  renderEditArtworkForm= (e) => {
+    Artwork.renderEditArtworkForm(this, e)
   }
 
   static renderAllArtists(){
