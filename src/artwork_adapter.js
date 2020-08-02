@@ -33,8 +33,8 @@ static createArtwork({title, year, description, image_url, artist_id}){
       })
     })}
 
-static editArtwork({id, title, year, description, image_url, artist_id}){
-
+static editArtwork({id, title, year, description, image_url}){
+    debugger
     return fetch(`http://localhost:3000/api/v1/artworks/${id}`, {
       method: "PUT",
       headers: {
@@ -47,7 +47,6 @@ static editArtwork({id, title, year, description, image_url, artist_id}){
           year,
           description,
           image_url,
-          artist_id
         }
       })
     })
