@@ -95,5 +95,34 @@ class Artist{
     })
   }
 
+static addArtistForm(){
+    const formContainer= document.querySelector("#add-artist-form")
+    formContainer.innerHTML=""
+    const form= document.createElement('form')
+    form.innerHTML= `
+
+    <label>Name:</label>
+    <input type= "text" id= "form-name" name="name"><br>
+    <label>Image URL:</label>
+    <input type= "text" id="form-profile_image_url" name="profile_image_url"><br>
+    <label>Biography:</label>
+    <input type= "text" id= "form-biography" name="biography"><br>
+    <input id="create-artist" name="submit" type="submit" value="Submit">
+
+    `
+    formContainer.append(form)
+    form.addEventListener("submit", Artist.createArtist)
+
+  }
+
+static createArtist(e){
+    e.preventDefault()
+    console.log(e)
+    const name= document.querySelector("#form-name").value
+    const biography= document.querySelector("#form-biography").value
+    const profile_image_url= document.querySelector("#form-profile_image_url").value
+    ArtistAdapter.newArtist({name, biography, profile_image_url})
+  }
+
 
 }

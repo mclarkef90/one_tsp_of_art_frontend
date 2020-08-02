@@ -42,6 +42,7 @@ class Artwork{
 
   renderLI(){
     return `
+    <br>
     <div id="artworkLi-${this.id}">
     <img src="${this.image_url}" width= "400px" length= "600px"><br>
     <h4>${this.title}, ${this.year}</h4>
@@ -74,10 +75,9 @@ static renderEditArtworkForm(artist, event){
 
 static submitArtworkEdit= (e) => {
   e.preventDefault()
-  debugger
   e.srcElement.querySelectorAll('input').forEach(function(input){
      input.name !== "submit" && (this[`${input.name}`] = input.value)}, this)
-  ArtworkAdapter.editArtwork(this)
+  ArtworkAdapter.createArtwork(this)
 }
 
 // = () => {
