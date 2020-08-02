@@ -34,7 +34,7 @@ static createArtwork({title, year, description, image_url, artist_id}){
     })}
 
 static editArtwork({id, title, year, description, image_url, artist_id}){
-  
+
     return fetch(`http://localhost:3000/api/v1/artworks/${id}`, {
       method: "PUT",
       headers: {
@@ -52,6 +52,12 @@ static editArtwork({id, title, year, description, image_url, artist_id}){
       })
     })
   }
+
+static deleteArtwork(id){
+  debugger
+      return fetch(`${ArtworkAdapter.baseURL}/${id}`, {
+        method: "DELETE"})
+    }
 
 
 

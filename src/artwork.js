@@ -49,13 +49,14 @@ class Artwork{
     <p>${this.description}</p><br>
     <button id="${this.id}" type="submit">Edit Artwork</button>
     </div>`
+
 }
 
 static renderEditArtworkForm(artist, event){
   const id= parseInt(event.target.id)
   const artwork= Artwork.findById(id)
   const artworkContainer= document.getElementById("artworkLi-"+id)
-  artworkContainer.innerHTML=""
+  //artworkContainer.innerHTML=""
   artworkContainer.innerHTML=`
   <form>
   <label>Title:</label>
@@ -68,13 +69,17 @@ static renderEditArtworkForm(artist, event){
   <input type= "text" name="description" value="${artwork.description}"><br>
   <input type="hidden" name="id" value="${artwork.id}">
   <input type= "submit" name="submit" value="Submit">
+  <input type= "button" name="delete" data-id="${artwork.id}" value="Delete">
   </form>
     `
+  artworkContainer.addEventListener("click", Artwork.delete)
   artworkContainer.addEventListener("submit", Artwork.submitArtworkEdit)
+
 }
 
 static submitArtworkEdit= (e) => {
   e.preventDefault()
+  debugger
   e.srcElement.querySelectorAll('input').forEach(function(input){
      input.name !== "submit" && (this[`${input.name}`] = input.value)}, this)
   ArtworkAdapter.createArtwork(this)
@@ -129,6 +134,12 @@ static submitAddArtworkForm= (e) => {
 
 static findById(id) {
     return this.all.find(artwork => artwork.id === id);
+  }
+
+static delete (e){
+  const id= e.target.dataset.id
+  console.log(this.id)
+  ArtworkAdapter.deleteArtwork(id)
   }
 
 }
