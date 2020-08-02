@@ -48,7 +48,7 @@ class Artwork{
     <img src="${this.image_url}" width= "400px" length= "600px"><br>
     <h4>${this.title}, ${this.year}</h4>
     <p>Likes: ${this.likes}</p>
-    <p>${this.description}</p><br>
+    <p>${this.description}</p>
     <button id="${this.id}" type="submit">Edit Artwork</button>
     </div>`
 
