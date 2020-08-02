@@ -46,4 +46,9 @@ static newArtist({name, biography, profile_image_url}){
       })
     })
   }
+
+static deleteArtist(id){
+    return fetch(`${ArtistAdapter.baseURL}/${id}`, {
+      method: "DELETE"})
+  }
 }

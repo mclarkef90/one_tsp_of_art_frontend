@@ -21,9 +21,11 @@ class Artist{
     this.editButton.innerText= "Edit Artist"
     this.addArtworkButton= document.createElement('button')
     this.addArtworkButton.innerText= "Add Artwork"
+    this.deleteButton= document.createElement('button')
+    this.deleteButton.innerText= "Delete Artist"
     let space= document.createElement('p')
     space.innerText= "===================="
-    this.main.append(this.details, this.editButton, this.addArtworkButton, this.artworks, space)
+    this.main.append(this.details, this.editButton, this.addArtworkButton, this.deleteButton, this.artworks, space)
 
     this.form= document.createElement('form')
 
@@ -33,6 +35,9 @@ class Artist{
     this.addArtworkButton.addEventListener('click', this.artistNewArtwork)
 
     this.artworks.addEventListener('click', this.renderEditArtworkForm)
+
+    this.deleteButton.addEventListener('click', this.deleteArtist)
+
     Artist.all.push(this)
   }
 
@@ -85,6 +90,12 @@ class Artist{
 
   renderEditArtworkForm= (e) => {
     Artwork.renderEditArtworkForm(this, e)
+  }
+
+  deleteArtist = () => {
+    
+    ArtistAdapter.deleteArtist(this.id)
+
   }
 
   static renderAllArtists(){
