@@ -7,7 +7,7 @@ Upon visiting the site, one work will be randomly selected and presented to the 
 Users may contribute to the database by creating, updating, and deleting artist and artwork entries.
 
 Technologies
-Rails 6 - backend:
+Rails 6 - backend: https://github.com/morgancfarrow90/one_tsp_of_art_backend
 JavaScript
 
 ## Using One Teaspoon Of Art
@@ -21,7 +21,7 @@ To use One Teaspoon Of Art, follow these steps:
 
 ##Video Walk Through (Click the Icon Below)
 
-[![Pick Out Your Pick Up](https://pngimg.com/uploads/youtube/youtube_PNG17.png)](https://youtu.be/WExRFmxXNZo)
+[![Pick Out Your Pick Up](https://pngimg.com/uploads/youtube/youtube_PNG17.png)](https://youtu.be/_izdUxRV2x4)
 
 ## Contact
 
