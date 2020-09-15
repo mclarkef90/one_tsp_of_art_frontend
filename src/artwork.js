@@ -55,24 +55,26 @@ class Artwork{
 }
 
 static renderEditArtworkForm(artist, event){
+
   const id= parseInt(event.target.id)
   const artwork= Artwork.findById(id)
   const artworkContainer= document.getElementById("artworkLi-"+id)
   artworkContainer.innerHTML=""
   artworkContainer.innerHTML=`
   <form>
+  <h2> Edit Artwork </h2>
   <label>Title:</label>
   <input type= "text" name="title" value="${artwork.title}"><br>
   <label>Year:</label>
   <input type= "text" name="year" value="${artwork.year}"><br>
   <label>Image URL:</label>
-  <input type= "text" name="url" value="${artwork.image_url}"><br>
+  <input type= "text" name="image_url" value="${artwork.image_url}"><br>
   <label>Description:</label>
   <input type= "text" name="description" value="${artwork.description}"><br>
   <input type="hidden" name="id" value="${artwork.id}">
   <input type= "submit" id= "submitB" name="submit" value="Submit">
   </form>
-    `
+  `
     const deleteB= document.createElement('button')
     deleteB.innerText= "Delete"
     deleteB.type= "button"
@@ -88,11 +90,25 @@ static renderEditArtworkForm(artist, event){
 
 static submitArtworkEdit= (e) => {
   e.preventDefault()
-
   e.srcElement.querySelectorAll('input').forEach(function(input){
      input.name !== "submit" && (this[`${input.name}`] = input.value)}, this)
   ArtworkAdapter.editArtwork(this)
-}
+
+  const id= parseInt(this.id)
+  const artwork= Artwork.findById(id)
+  const artworkContainer= document.getElementById("artworkLi-"+id)
+  artworkContainer.innerHTML=`
+  <br>
+  <div id="artworkLi-${this.id}">
+  <img src="${this.image_url}" width= "400px" length= "600px"><br>
+  <h4>${this.title}, ${this.year}</h4>
+  <p>Likes: ${artwork.likes}</p>
+  <p>${this.description}</p>
+  <button id="${this.id}" type="submit">Edit Artwork</button>
+  </div>
+  `
+  }
+
 
 static renderAddArtworkForm(artist) {
   //id.addArtworkButton.disabled= true

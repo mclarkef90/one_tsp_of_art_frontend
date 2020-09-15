@@ -54,7 +54,7 @@ static editArtwork({id, title, year, description, image_url}){
   }
 
 static deleteArtwork(id){
-  
+
       return fetch(`${ArtworkAdapter.baseURL}/${id}`, {
         method: "DELETE"})
     }
