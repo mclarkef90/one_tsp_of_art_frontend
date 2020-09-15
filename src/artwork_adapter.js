@@ -32,7 +32,9 @@ static createArtwork({title, year, description, image_url, likes, artist_id}){
 
         }
       })
-    })}
+    })
+  .then(location.reload())
+}
 
 static editArtwork({id, title, year, description, image_url}){
 
@@ -51,14 +53,14 @@ static editArtwork({id, title, year, description, image_url}){
         }
       })
     })
+    .then(location.reload())
   }
 
 static deleteArtwork(id){
 
       return fetch(`${ArtworkAdapter.baseURL}/${id}`, {
         method: "DELETE"})
+        .then(location.reload())
     }
-
-
 
 }

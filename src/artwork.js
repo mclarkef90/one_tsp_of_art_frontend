@@ -94,19 +94,19 @@ static submitArtworkEdit= (e) => {
      input.name !== "submit" && (this[`${input.name}`] = input.value)}, this)
   ArtworkAdapter.editArtwork(this)
 
-  const id= parseInt(this.id)
-  const artwork= Artwork.findById(id)
-  const artworkContainer= document.getElementById("artworkLi-"+id)
-  artworkContainer.innerHTML=`
-  <br>
-  <div id="artworkLi-${this.id}">
-  <img src="${this.image_url}" width= "400px" length= "600px"><br>
-  <h4>${this.title}, ${this.year}</h4>
-  <p>Likes: ${artwork.likes}</p>
-  <p>${this.description}</p>
-  <button id="${this.id}" type="submit">Edit Artwork</button>
-  </div>
-  `
+  // const id= parseInt(this.id)
+  // const artwork= Artwork.findById(id)
+  // const artworkContainer= document.getElementById("artworkLi-"+id)
+  // artworkContainer.innerHTML=`
+  // <br>
+  // <div id="artworkLi-${this.id}">
+  // <img src="${this.image_url}" width= "400px" length= "600px"><br>
+  // <h4>${this.title}, ${this.year}</h4>
+  // <p>Likes: ${artwork.likes}</p>
+  // <p>${this.description}</p>
+  // <button id="${this.id}" type="submit">Edit Artwork</button>
+  // </div>
+  // `
   }
 
 
