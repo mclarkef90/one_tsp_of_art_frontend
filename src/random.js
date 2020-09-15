@@ -28,7 +28,7 @@ class Random{
 
   renderDetails(){
     this.details.innerHTML= `
-    <h1>One Teaspoon of Art</h1>
+    
     <img src="${this.image_url}" width= "400px" length= "600px">
     <p>Title: <span>${this.title}</span></p>
     <p>Year: <span>${this.year}</span></p>

@@ -30,7 +30,7 @@ class ArtistAdapter{
   }
 
 static newArtist({name, biography, profile_image_url}){
-  
+
     return fetch(`${ArtistAdapter.baseURL}`, {
       method: "POST",
       headers: {
@@ -45,10 +45,12 @@ static newArtist({name, biography, profile_image_url}){
         }
       })
     })
+    .then(location.reload())
   }
 
 static deleteArtist(id){
     return fetch(`${ArtistAdapter.baseURL}/${id}`, {
       method: "DELETE"})
+      .then(location.reload())
   }
 }
