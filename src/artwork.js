@@ -111,6 +111,8 @@ static renderAddArtworkForm(artist) {
   <input type="hidden" name= "artist_id" value=${artist.id}>
   <input type="hidden" name= "likes" value= 0>
   <input id="add-artwork" type="submit" value="Submit">
+  <input id="cancel-artwork" name="cancel" type="button" value="Cancel">
+
   `
   Artwork.newArtworkForm.append(form)
   form.addEventListener("submit", Artwork.submitAddArtworkForm)
@@ -121,8 +123,6 @@ static submitAddArtworkForm= (e) => {
   console.log(e)
   Artwork.newArtworkForm.querySelectorAll('input').forEach(function(input){
     input.name !== "submit" && (this[`${input.name}`] = input.value)}, this)
-    // this.editButton.disabled= false
-
     ArtworkAdapter.createArtwork(this)
 }
 

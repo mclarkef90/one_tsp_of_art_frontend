@@ -58,11 +58,11 @@ class Artist{
   }
 
   renderEditArtistForm = () => {
-    this.editButton.disabled= true
-    console.log(this);
+    // this.editButton.disabled= true
     this.details.innerHTML= ""
     this.details.appendChild(this.form)
     this.form.innerHTML= `
+    <h2>Edit Artist: ${this.name}</h2>
     <label>Name:</label>
     <input type= "text" name="name" value="${this.name}"><br>
     <label>Image URL:</label>
@@ -70,7 +70,8 @@ class Artist{
     <label>Biography:</label>
     <input type= "text" name="biography" value="${this.biography}"><br>
     <input id="edit-artist" type="submit" value="Submit">
-    `}
+    `
+  }
 
   submitEditArtistForm= (e) => {
     e.preventDefault()
@@ -83,9 +84,15 @@ class Artist{
   }
 
   artistNewArtwork= () => {
-    this.addArtworkButton.disabled= true,
+    // this.addArtworkButton.disabled= true,
     console.log(this),
     Artwork.renderAddArtworkForm(this)
+
+    let cancelButton= document.querySelector("#cancel-artwork")
+    let newArtworkFormConatiner= document.querySelector("#add-artwork-form")
+    cancelButton.addEventListener("click", function() {
+      newArtworkFormConatiner.innerHTML=""
+      })
   }
 
   renderEditArtworkForm= (e) => {
@@ -118,10 +125,14 @@ static addArtistForm(){
     <label>Biography:</label>
     <input type= "text" id= "form-biography" name="biography"><br>
     <input id="create-artist" name="submit" type="submit" value="Submit">
-
+    <input id="cancel-artist" name="cancel" type="button" value="Cancel">
     `
     formContainer.append(form)
     form.addEventListener("submit", Artist.createArtist)
+    let cancelButton= document.querySelector("#cancel-artist")
+    cancelButton.addEventListener("click", function (){
+      formContainer.innerHTML=""
+    })
 
   }
 
