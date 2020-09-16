@@ -115,6 +115,8 @@ static renderAddArtworkForm(artist) {
   console.log(artist);
   const form= document.createElement('form')
   form.innerHTML= `
+  <br>
+  <div class="card-body">
   <h3>Add Artwork for ${artist.name}</h3>
   <label>Title:</label>
   <input type= "text" name="title"><br>
@@ -128,6 +130,7 @@ static renderAddArtworkForm(artist) {
   <input type="hidden" name= "likes" value= 0>
   <input id="add-artwork" type="submit" value="Submit">
   <input id="cancel-artwork" name="cancel" type="button" value="Cancel">
+  <div>
 
   `
   Artwork.newArtworkForm.append(form)

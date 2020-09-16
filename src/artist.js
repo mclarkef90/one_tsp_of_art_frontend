@@ -9,8 +9,6 @@ class Artist{
     this.biography= biography
     this.profile_image_url= profile_image_url
     this.artworks= artworks
-
-
     this.main = document.createElement('div')
     this.main.id= `artist-${this.id}`
     this.details= document.createElement('div')
@@ -24,7 +22,6 @@ class Artist{
     this.deleteButton= document.createElement('button')
     this.deleteButton.innerText= "Delete Artist"
     let space= document.createElement('p')
-    space.innerText= "===================="
     this.main.append(this.details, this.editButton, this.addArtworkButton, this.deleteButton, this.artworks, space)
 
     this.form= document.createElement('form')
@@ -62,6 +59,7 @@ class Artist{
     this.details.innerHTML= ""
     this.details.appendChild(this.form)
     this.form.innerHTML= `
+    <div class="card-body">
     <h2>Edit Artist: ${this.name}</h2>
     <label>Name:</label>
     <input type= "text" name="name" value="${this.name}"><br>
@@ -70,6 +68,8 @@ class Artist{
     <label>Biography:</label>
     <input type= "text" name="biography" value="${this.biography}"><br>
     <input id="edit-artist" type="submit" value="Submit">
+    </div>
+    <br>
     `
   }
 
@@ -117,7 +117,9 @@ static addArtistForm(){
     formContainer.innerHTML=""
     const form= document.createElement('form')
     form.innerHTML= `
-
+    <br>
+    <div class="card-body">
+    <h2>Add Artist</h2>
     <label>Name:</label>
     <input type= "text" id= "form-name" name="name"><br>
     <label>Image URL:</label>
@@ -126,6 +128,7 @@ static addArtistForm(){
     <input type= "text" id= "form-biography" name="biography"><br>
     <input id="create-artist" name="submit" type="submit" value="Submit">
     <input id="cancel-artist" name="cancel" type="button" value="Cancel">
+    </div>
     `
     formContainer.append(form)
     form.addEventListener("submit", Artist.createArtist)

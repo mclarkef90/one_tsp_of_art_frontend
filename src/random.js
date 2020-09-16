@@ -15,6 +15,8 @@ class Random{
     this.main.id= `artwork-${this.id}`
     this.details= document.createElement('div')
     this.details.id= `artwork-${this.id}-details`
+    this.main.appendChild(this.details)
+
     this.likeButton= document.createElement('button')
     this.likeButton.innerText= "❤️"
     this.likeButton.dataset.id= this.id
@@ -28,7 +30,7 @@ class Random{
 
   renderDetails(){
     this.details.innerHTML= `
-    
+
     <img src="${this.image_url}" width= "400px" length= "600px">
     <p>Title: <span>${this.title}</span></p>
     <p>Year: <span>${this.year}</span></p>
